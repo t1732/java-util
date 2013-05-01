@@ -10,13 +10,20 @@
   <property name="out.classes.absolute.dir" location="${out.dir}/classes" />
 
   <property name="manifest.file" value="${out.dir}/META-INF/MANIFEST.MF" />
-  <property name="jar.file" value="t1732_util.jar" />
+  <property name="jar.file" value="${out.dir}/t1732_util.jar" />
+
+  <target name="clean">
+    <echo message="clean out dir start..." />
+    <delete dir="${out.dir}"/>
+  </target>
 
   <target name="compile">
     <!-- ディレクトリの作成 -->
+    <echo message="make classes dir" />
     <mkdir dir="${out.classes.absolute.dir}" />
 
     <!-- ソースファイルのコンパイル  -->
+    <echo message="compiling start..." />
     <javac encoding="${java.encoding}"
            source="${java.source}" target="${java.target}"
            debug="true" extdirs="" includeantruntime="false"
@@ -26,16 +33,17 @@
     </javac>
   </target>
 
-  <target name="jar" depends="compile">
-    <echo message="make jar file" />
+  <target name="jar">
+    <echo message="packaging start..." />
     <delete file="${preobfuscate.jar.file}"/>
     <jar basedir="${out.classes.absolute.dir}"
          destfile="${jar.file}" />
     <!-- <jar basedir="${dir.temp}" -->
     <!--      destfile="${jar.file}" -->
     <!--      manifest="${manifest.file}" /> -->
+    <echo message="out ${jar.file}" />
   </target>
 
-  <target name="c" depends="compile" />
-  <target name="j" depends="compile, jar" />
+  <target name="c" depends="clean, compile" />
+  <target name="j" depends="clean, compile, jar" />
 </project>

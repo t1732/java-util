@@ -1,10 +1,10 @@
-package jp.gr.java_conf.t1732.util;
+package jp.gr.java_conf.t1732.util.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateSupport {
+public class Difference {
 
     /**
      * to - from の差
@@ -14,10 +14,10 @@ public class DateSupport {
      * @return 2つの時間の差 long (ミリ秒)
      * @throws ParseException 日付フォーマットが不正な場合
      */
-    public static long differenceMillis(long fromMillis, String toStrTime) throws ParseException {
+    public static long millis(long fromMillis, String toStrTime) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         Date toDate = format.parse(toStrTime);
-        return differenceMillis(fromMillis, toDate);
+        return millis(fromMillis, toDate);
     }
 
     /**
@@ -27,7 +27,7 @@ public class DateSupport {
      * @param toDate       日付   java.util.Date
      * @return 2つの日付の差 long (ミリ秒)
      */
-    public static long differenceMillis(long fromMillis, Date toDate) {
+    public static long millis(long fromMillis, Date toDate) {
         long toDateTime = toDate.getTime();
         long diffMillis = toDateTime - fromMillis;
         return diffMillis;
