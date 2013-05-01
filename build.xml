@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="t1732Util" default="help">
+
+  <property name="java.encoding" value="UTF-8" />
+  <property name="java.target" value="1.6" />
+  <property name="java.source" value="1.6" />
+
+  <property name="source.dir" value="src" />
+  <property name="out.dir" value="bin" />
+  <property name="out.classes.absolute.dir" location="${out.dir}/classes" />
+
+  <property name="manifest.file" value="${out.dir}/META-INF/MANIFEST.MF" />
+  <property name="jar.file" value="t1732_util.jar" />
+
+  <target name="compile">
+    <!-- ディレクトリの作成 -->
+    <mkdir dir="${out.classes.absolute.dir}" />
+
+    <!-- ソースファイルのコンパイル  -->
+    <javac encoding="${java.encoding}"
+           source="${java.source}" target="${java.target}"
+           debug="true" extdirs="" includeantruntime="false"
+           destdir="${out.classes.absolute.dir}"
+           verbose="${verbose}">
+      <src path="${source.dir}" />
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <echo message="make jar file" />
+    <delete file="${preobfuscate.jar.file}"/>
+    <jar basedir="${out.classes.absolute.dir}"
+         destfile="${jar.file}" />
+    <!-- <jar basedir="${dir.temp}" -->
+    <!--      destfile="${jar.file}" -->
+    <!--      manifest="${manifest.file}" /> -->
+  </target>
+
+  <target name="c" depends="compile" />
+  <target name="j" depends="compile, jar" />
+</project>
