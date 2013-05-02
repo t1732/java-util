@@ -1,4 +1,4 @@
-package jp.gr.java_conf.t1732.util.date;
+package com.github.t1732.util.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

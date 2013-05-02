@@ -1,4 +1,4 @@
-package jp.gr.java_conf.t1732.util.time;
+package com.github.t1732.util.time;
 
 import java.util.concurrent.TimeUnit;
 
